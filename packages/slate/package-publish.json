@@ -1,7 +1,7 @@
 {
-  "name": "slate",
+  "name": "@rtc/slate",
   "description": "A completely customizable framework for building rich text editors.",
-  "version": "0.60.4",
+  "version": "0.60.3-tinymce.7",
   "license": "MIT",
   "repository": "git://github.com/ianstormtaylor/slate.git",
   "main": "dist/index.js",
@@ -13,13 +13,10 @@
   "files": [
     "dist/"
   ],
-  "scripts": {
-    "prepublish": "echo 'use package-publish.json' && exit 1"
-  },
   "dependencies": {
     "@types/esrever": "^0.2.0",
     "esrever": "^0.2.0",
-    "immer": "^7.0.0",
+    "immer": "^8.0.1",
     "is-plain-object": "^3.0.0",
     "tiny-warning": "^1.0.3"
   },

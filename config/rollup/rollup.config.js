@@ -182,12 +182,13 @@ function configure(pkg, env, target) {
   }
 }
 
+const isProd = process.env.NODE_ENV === 'production'
+const coreOnly = isProd || process.env.CORE_ONLY === 'true'
 /**
  * Return a Rollup configuration for a `pkg`.
  */
 
 function factory(pkg, options = {}) {
-  const isProd = process.env.NODE_ENV === 'production'
   return [
     configure(pkg, 'development', 'cjs', options),
     configure(pkg, 'development', 'module', options),
@@ -201,8 +202,11 @@ function factory(pkg, options = {}) {
  */
 
 export default [
-  ...factory(Core),
-  ...factory(History),
-  ...factory(Hyperscript),
-  ...factory(React),
+  ...factory({
+    ...Core,
+    "name": "slate"
+  }),
+  ...coreOnly ? [] : factory(History),
+  ...coreOnly ? [] : factory(Hyperscript),
+  ...coreOnly ? [] : factory(React),
 ]
