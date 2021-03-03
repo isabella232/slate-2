@@ -632,7 +632,7 @@ export const NodeTransforms: NodeTransforms = {
           }
 
           if (props[k] !== node[k]) {
-            properties[k] = node[k]
+            properties[k] = node[k] ?? null
             newProperties[k] = props[k]
           }
         }
